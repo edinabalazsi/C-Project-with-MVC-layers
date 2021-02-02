@@ -1,0 +1,4 @@
+var class_tea_house_1_1_web_1_1_areas_1_1_help_page_1_1_model_descriptions_1_1_collection_model_description =
+[
+    [ "ElementDescription", "class_tea_house_1_1_web_1_1_areas_1_1_help_page_1_1_model_descriptions_1_1_collection_model_description.html#a85a726a6555f33737f37ac693b1fea8e", null ]
+];

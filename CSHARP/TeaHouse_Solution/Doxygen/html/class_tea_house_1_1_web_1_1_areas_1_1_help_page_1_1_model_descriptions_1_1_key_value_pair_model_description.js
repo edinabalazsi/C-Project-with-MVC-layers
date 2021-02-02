@@ -1,0 +1,5 @@
+var class_tea_house_1_1_web_1_1_areas_1_1_help_page_1_1_model_descriptions_1_1_key_value_pair_model_description =
+[
+    [ "KeyModelDescription", "class_tea_house_1_1_web_1_1_areas_1_1_help_page_1_1_model_descriptions_1_1_key_value_pair_model_description.html#a4bd5e25a3c83319d8ad46d4a3de70a42", null ],
+    [ "ValueModelDescription", "class_tea_house_1_1_web_1_1_areas_1_1_help_page_1_1_model_descriptions_1_1_key_value_pair_model_description.html#ae7ac57c9bb049efef1020593e40d58c4", null ]
+];

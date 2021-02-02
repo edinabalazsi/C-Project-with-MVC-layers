@@ -1,0 +1,5 @@
+var interface_tea_house_1_1_web_1_1_areas_1_1_help_page_1_1_model_descriptions_1_1_i_model_documentation_provider =
+[
+    [ "GetDocumentation", "interface_tea_house_1_1_web_1_1_areas_1_1_help_page_1_1_model_descriptions_1_1_i_model_documentation_provider.html#a62b827beb1a16a578f584ef4d4cb2804", null ],
+    [ "GetDocumentation", "interface_tea_house_1_1_web_1_1_areas_1_1_help_page_1_1_model_descriptions_1_1_i_model_documentation_provider.html#a4b4526ebdf3b9e1683ee66eebb76dd7e", null ]
+];
