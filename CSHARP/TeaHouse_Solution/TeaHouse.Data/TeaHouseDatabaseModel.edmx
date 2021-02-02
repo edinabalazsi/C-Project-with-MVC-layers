@@ -1,0 +1,288 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TeaHouseDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="EXTRA">
+          <Key>
+            <PropertyRef Name="EXT_ID" />
+          </Key>
+          <Property Name="EXT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ENAME" Type="varchar" MaxLength="20" />
+          <Property Name="CATEGORY" Type="varchar" MaxLength="10" />
+          <Property Name="ALLERGEN" Type="varchar" MaxLength="10" />
+          <Property Name="AVAILABLE" Type="bit" Nullable="false" />
+          <Property Name="PRICE" Type="numeric" Precision="3" Scale="0" />
+        </EntityType>
+        <EntityType Name="SUP_TLEAF_JUNCTION">
+          <Key>
+            <PropertyRef Name="STL_ID" />
+          </Key>
+          <Property Name="STL_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SUP_ID" Type="int" />
+          <Property Name="TL_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="SUPPLIER">
+          <Key>
+            <PropertyRef Name="SUP_ID" />
+          </Key>
+          <Property Name="SUP_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SNAME" Type="varchar" MaxLength="20" />
+          <Property Name="STREET" Type="varchar" MaxLength="20" />
+          <Property Name="CITY" Type="varchar" MaxLength="15" />
+          <Property Name="ORDER_STATUS" Type="varchar" MaxLength="9" />
+          <Property Name="ORDERSTOTAL" Type="numeric" Precision="2" Scale="0" />
+        </EntityType>
+        <EntityType Name="TEA">
+          <Key>
+            <PropertyRef Name="TEA_ID" />
+          </Key>
+          <Property Name="TEA_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TEANAME" Type="varchar" MaxLength="25" />
+          <Property Name="QUANTITY" Type="numeric" Precision="3" Scale="0" />
+          <Property Name="BASEPRICE" Type="numeric" Precision="3" Scale="0" />
+          <Property Name="SALES" Type="numeric" Precision="2" Scale="0" />
+          <Property Name="TOTAL" Type="numeric" Precision="3" Scale="0" />
+        </EntityType>
+        <EntityType Name="TEALEAF">
+          <Key>
+            <PropertyRef Name="TL_ID" />
+          </Key>
+          <Property Name="TL_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TLNAME" Type="varchar" MaxLength="20" />
+          <Property Name="VARIETY" Type="varchar" MaxLength="15" />
+          <Property Name="BRAND" Type="varchar" MaxLength="15" />
+          <Property Name="ACIDITY" Type="varchar" MaxLength="15" />
+          <Property Name="FLAVOUR" Type="varchar" MaxLength="15" />
+          <Property Name="REGION" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <Association Name="FK__SUP_TLEAF__SUP_I__778AC167">
+          <End Role="SUPPLIER" Type="Self.SUPPLIER" Multiplicity="0..1" />
+          <End Role="SUP_TLEAF_JUNCTION" Type="Self.SUP_TLEAF_JUNCTION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SUPPLIER">
+              <PropertyRef Name="SUP_ID" />
+            </Principal>
+            <Dependent Role="SUP_TLEAF_JUNCTION">
+              <PropertyRef Name="SUP_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SUP_TLEAF__TL_ID__787EE5A0">
+          <End Role="TEALEAF" Type="Self.TEALEAF" Multiplicity="0..1" />
+          <End Role="SUP_TLEAF_JUNCTION" Type="Self.SUP_TLEAF_JUNCTION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TEALEAF">
+              <PropertyRef Name="TL_ID" />
+            </Principal>
+            <Dependent Role="SUP_TLEAF_JUNCTION">
+              <PropertyRef Name="TL_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TeaHouseDatabaseModelStoreContainer">
+          <EntitySet Name="EXTRA" EntityType="Self.EXTRA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SUP_TLEAF_JUNCTION" EntityType="Self.SUP_TLEAF_JUNCTION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SUPPLIER" EntityType="Self.SUPPLIER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TEA" EntityType="Self.TEA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TEALEAF" EntityType="Self.TEALEAF" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__SUP_TLEAF__SUP_I__778AC167" Association="Self.FK__SUP_TLEAF__SUP_I__778AC167">
+            <End Role="SUPPLIER" EntitySet="SUPPLIER" />
+            <End Role="SUP_TLEAF_JUNCTION" EntitySet="SUP_TLEAF_JUNCTION" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SUP_TLEAF__TL_ID__787EE5A0" Association="Self.FK__SUP_TLEAF__TL_ID__787EE5A0">
+            <End Role="TEALEAF" EntitySet="TEALEAF" />
+            <End Role="SUP_TLEAF_JUNCTION" EntitySet="SUP_TLEAF_JUNCTION" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TeaHouseDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="EXTRA">
+          <Key>
+            <PropertyRef Name="EXT_ID" />
+          </Key>
+          <Property Name="EXT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ENAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CATEGORY" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ALLERGEN" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="AVAILABLE" Type="Boolean" Nullable="false" />
+          <Property Name="PRICE" Type="Decimal" Precision="3" Scale="0" />
+        </EntityType>
+        <EntityType Name="SUP_TLEAF_JUNCTION">
+          <Key>
+            <PropertyRef Name="STL_ID" />
+          </Key>
+          <Property Name="STL_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SUP_ID" Type="Int32" />
+          <Property Name="TL_ID" Type="Int32" />
+          <NavigationProperty Name="SUPPLIER" Relationship="Self.FK__SUP_TLEAF__SUP_I__778AC167" FromRole="SUP_TLEAF_JUNCTION" ToRole="SUPPLIER" />
+          <NavigationProperty Name="TEALEAF" Relationship="Self.FK__SUP_TLEAF__TL_ID__787EE5A0" FromRole="SUP_TLEAF_JUNCTION" ToRole="TEALEAF" />
+        </EntityType>
+        <EntityType Name="SUPPLIER">
+          <Key>
+            <PropertyRef Name="SUP_ID" />
+          </Key>
+          <Property Name="SUP_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SNAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="STREET" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CITY" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="ORDER_STATUS" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="ORDERSTOTAL" Type="Decimal" Precision="2" Scale="0" />
+          <NavigationProperty Name="SUP_TLEAF_JUNCTION" Relationship="Self.FK__SUP_TLEAF__SUP_I__778AC167" FromRole="SUPPLIER" ToRole="SUP_TLEAF_JUNCTION" />
+        </EntityType>
+        <EntityType Name="TEA">
+          <Key>
+            <PropertyRef Name="TEA_ID" />
+          </Key>
+          <Property Name="TEA_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TEANAME" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="QUANTITY" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="BASEPRICE" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="SALES" Type="Decimal" Precision="2" Scale="0" />
+          <Property Name="TOTAL" Type="Decimal" Precision="3" Scale="0" />
+        </EntityType>
+        <EntityType Name="TEALEAF">
+          <Key>
+            <PropertyRef Name="TL_ID" />
+          </Key>
+          <Property Name="TL_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TLNAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="VARIETY" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="BRAND" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="ACIDITY" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="FLAVOUR" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="REGION" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SUP_TLEAF_JUNCTION" Relationship="Self.FK__SUP_TLEAF__TL_ID__787EE5A0" FromRole="TEALEAF" ToRole="SUP_TLEAF_JUNCTION" />
+        </EntityType>
+        <Association Name="FK__SUP_TLEAF__SUP_I__778AC167">
+          <End Role="SUPPLIER" Type="Self.SUPPLIER" Multiplicity="0..1" />
+          <End Role="SUP_TLEAF_JUNCTION" Type="Self.SUP_TLEAF_JUNCTION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SUPPLIER">
+              <PropertyRef Name="SUP_ID" />
+            </Principal>
+            <Dependent Role="SUP_TLEAF_JUNCTION">
+              <PropertyRef Name="SUP_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SUP_TLEAF__TL_ID__787EE5A0">
+          <End Role="TEALEAF" Type="Self.TEALEAF" Multiplicity="0..1" />
+          <End Role="SUP_TLEAF_JUNCTION" Type="Self.SUP_TLEAF_JUNCTION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TEALEAF">
+              <PropertyRef Name="TL_ID" />
+            </Principal>
+            <Dependent Role="SUP_TLEAF_JUNCTION">
+              <PropertyRef Name="TL_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TeaHouseDatabaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="EXTRA" EntityType="Self.EXTRA" />
+          <EntitySet Name="SUP_TLEAF_JUNCTION" EntityType="Self.SUP_TLEAF_JUNCTION" />
+          <EntitySet Name="SUPPLIER" EntityType="Self.SUPPLIER" />
+          <EntitySet Name="TEA" EntityType="Self.TEA" />
+          <EntitySet Name="TEALEAF" EntityType="Self.TEALEAF" />
+          <AssociationSet Name="FK__SUP_TLEAF__SUP_I__778AC167" Association="Self.FK__SUP_TLEAF__SUP_I__778AC167">
+            <End Role="SUPPLIER" EntitySet="SUPPLIER" />
+            <End Role="SUP_TLEAF_JUNCTION" EntitySet="SUP_TLEAF_JUNCTION" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SUP_TLEAF__TL_ID__787EE5A0" Association="Self.FK__SUP_TLEAF__TL_ID__787EE5A0">
+            <End Role="TEALEAF" EntitySet="TEALEAF" />
+            <End Role="SUP_TLEAF_JUNCTION" EntitySet="SUP_TLEAF_JUNCTION" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TeaHouseDatabaseModelStoreContainer" CdmEntityContainer="TeaHouseDatabaseEntities">
+          <EntitySetMapping Name="EXTRA">
+            <EntityTypeMapping TypeName="TeaHouseDatabaseModel.EXTRA">
+              <MappingFragment StoreEntitySet="EXTRA">
+                <ScalarProperty Name="EXT_ID" ColumnName="EXT_ID" />
+                <ScalarProperty Name="ENAME" ColumnName="ENAME" />
+                <ScalarProperty Name="CATEGORY" ColumnName="CATEGORY" />
+                <ScalarProperty Name="ALLERGEN" ColumnName="ALLERGEN" />
+                <ScalarProperty Name="AVAILABLE" ColumnName="AVAILABLE" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SUP_TLEAF_JUNCTION">
+            <EntityTypeMapping TypeName="TeaHouseDatabaseModel.SUP_TLEAF_JUNCTION">
+              <MappingFragment StoreEntitySet="SUP_TLEAF_JUNCTION">
+                <ScalarProperty Name="STL_ID" ColumnName="STL_ID" />
+                <ScalarProperty Name="SUP_ID" ColumnName="SUP_ID" />
+                <ScalarProperty Name="TL_ID" ColumnName="TL_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SUPPLIER">
+            <EntityTypeMapping TypeName="TeaHouseDatabaseModel.SUPPLIER">
+              <MappingFragment StoreEntitySet="SUPPLIER">
+                <ScalarProperty Name="SUP_ID" ColumnName="SUP_ID" />
+                <ScalarProperty Name="SNAME" ColumnName="SNAME" />
+                <ScalarProperty Name="STREET" ColumnName="STREET" />
+                <ScalarProperty Name="CITY" ColumnName="CITY" />
+                <ScalarProperty Name="ORDER_STATUS" ColumnName="ORDER_STATUS" />
+                <ScalarProperty Name="ORDERSTOTAL" ColumnName="ORDERSTOTAL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TEA">
+            <EntityTypeMapping TypeName="TeaHouseDatabaseModel.TEA">
+              <MappingFragment StoreEntitySet="TEA">
+                <ScalarProperty Name="TEA_ID" ColumnName="TEA_ID" />
+                <ScalarProperty Name="TEANAME" ColumnName="TEANAME" />
+                <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+                <ScalarProperty Name="BASEPRICE" ColumnName="BASEPRICE" />
+                <ScalarProperty Name="SALES" ColumnName="SALES" />
+                <ScalarProperty Name="TOTAL" ColumnName="TOTAL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TEALEAF">
+            <EntityTypeMapping TypeName="TeaHouseDatabaseModel.TEALEAF">
+              <MappingFragment StoreEntitySet="TEALEAF">
+                <ScalarProperty Name="TL_ID" ColumnName="TL_ID" />
+                <ScalarProperty Name="TLNAME" ColumnName="TLNAME" />
+                <ScalarProperty Name="VARIETY" ColumnName="VARIETY" />
+                <ScalarProperty Name="BRAND" ColumnName="BRAND" />
+                <ScalarProperty Name="ACIDITY" ColumnName="ACIDITY" />
+                <ScalarProperty Name="FLAVOUR" ColumnName="FLAVOUR" />
+                <ScalarProperty Name="REGION" ColumnName="REGION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
