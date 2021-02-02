@@ -1,3 +1,10 @@
 # README #
 
-Implementing extra MVC layers to the prog3 mid-semester project.
+CSHARP folder: main projects and Doxygen documentation
+  - Data
+  - Logic
+  - Logic Tests
+  - Repository
+  - MVC layers: Console, Web, WPF clients
+  
+JAVA folder: simple web application using servlets
