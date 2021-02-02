@@ -1,0 +1,30 @@
+﻿@model TeaHouse.Web.Models.Extra
+
+<h2>Edit one Extra</h2>
+
+@using (Html.BeginForm("Edit", "Extras"))
+{
+    @Html.ValidationSummary()
+
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(m => m.Id)
+    @Html.Hidden("editAction", ViewData["editAction"].ToString());
+
+    <div class="editor-label">@Html.LabelFor(m => m.Category)</div>
+    <div class="editor-field">@Html.EditorFor(m => m.Category)</div>
+
+    <div class="editor-label">@Html.LabelFor(m => m.ExtraName)</div>
+    <div class="editor-field">@Html.EditorFor(m => m.ExtraName)</div>
+
+    <div class="editor-label">@Html.LabelFor(m => m.Allergen)</div>
+    <div class="editor-field">@Html.EditorFor(m => m.Allergen)</div>
+
+    <div class="editor-label">@Html.LabelFor(m => m.Available)</div>
+    <div class="editor-field">@Html.EditorFor(m => m.Available)</div>
+
+    <div class="editor-label">@Html.LabelFor(m => m.Price)</div>
+    <div class="editor-field">@Html.EditorFor(m => m.Price)</div>
+
+    <input type="submit" value="SEND" />
+}

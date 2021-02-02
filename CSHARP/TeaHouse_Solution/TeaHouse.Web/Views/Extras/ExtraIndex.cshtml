@@ -1,0 +1,12 @@
+﻿@model TeaHouse.Web.Models.ExtrasViewModel
+@{
+    ViewBag.Title = "Crud Index";
+}
+
+<h2>Extras Index</h2>
+
+<p style="color:darkslategrey;"> @TempData["editResult"]</p>
+
+@Html.Partial("ExtraEdit", Model.Editedextra)
+
+@Html.Partial("ExtraList", Model.ListOfExtras)

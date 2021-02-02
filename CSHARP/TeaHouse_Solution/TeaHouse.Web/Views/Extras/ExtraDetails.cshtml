@@ -1,0 +1,35 @@
+﻿@model TeaHouse.Web.Models.Extra
+@{
+    ViewBag.Title = "ExtraDetails";
+}
+
+<h2>Datasheet of one Extra for the tea.</h2>
+@Html.ActionLink("Back to the extra list", "Index");
+
+<table border="1">
+    <tr>
+        <td>@Html.DisplayNameFor(m => m.Id)</td>
+        <td>@Html.DisplayFor(m => m.Id)</td>
+    </tr>
+    <tr>
+        <td>@Html.DisplayNameFor(m => m.ExtraName)</td>
+        <td>@Html.DisplayFor(m => m.ExtraName)</td>
+    </tr>
+    <tr>
+        <td>@Html.DisplayNameFor(m => m.Category)</td>
+        <td>@Html.DisplayFor(m => m.Category)</td>
+    </tr>
+    <tr>
+        <td>@Html.DisplayNameFor(m => m.Allergen)</td>
+        <td>@Html.DisplayFor(m => m.Allergen)</td>
+    </tr>
+    <tr>
+        <td>@Html.DisplayNameFor(m => m.Available)</td>
+        <td>@Html.DisplayFor(m => m.Available)</td>
+    </tr>
+    <tr>
+        <td>@Html.DisplayNameFor(m => m.Price)</td>
+        <td>@Html.DisplayFor(m => m.Price)</td>
+    </tr>
+</table>
+
